@@ -1,2 +1,4 @@
 # CS4530_u1244572
-Mobile App Programming
+Name: Alex Murdock
+Uid: u1244572
+GitHub Username: Amurdock6
