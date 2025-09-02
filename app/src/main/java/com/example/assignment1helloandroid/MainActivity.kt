@@ -2,6 +2,7 @@ package com.example.assignment1helloandroid
 
 import android.content.Intent
 import android.os.Bundle
+import android.view.View
 import android.widget.Button
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
@@ -9,6 +10,18 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 
 class MainActivity : AppCompatActivity() {
+    companion object {
+        const val EXTRA_BUTTON_CONTENT = "EXTRA_BUTTON_CONTENT"
+    }
+
+    private val navigateClickListener = View.OnClickListener { view ->
+        val text = (view as Button).text.toString()
+        startActivity(
+            Intent(this, SecondActivity::class.java)
+                .putExtra(EXTRA_BUTTON_CONTENT, text)
+        )
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
@@ -19,50 +32,7 @@ class MainActivity : AppCompatActivity() {
             insets
         }
 
-        val button1: Button = findViewById(R.id.button)
-        val button2: Button = findViewById(R.id.button2)
-        val button3: Button = findViewById(R.id.button3)
-        val button4: Button = findViewById(R.id.button4)
-        val button5: Button = findViewById(R.id.button5)
-
-        button1.setOnClickListener {
-            val buttonText = button1.text.toString()
-
-            val intent = Intent(this, SecondActivity::class.java)
-            intent.putExtra("BUTTON_CONTENT", buttonText) // "BUTTON_CONTENT" is the key
-            startActivity(intent)
-        }
-
-        button2.setOnClickListener {
-            val buttonText = button2.text.toString()
-
-            val intent = Intent(this, SecondActivity::class.java)
-            intent.putExtra("BUTTON_CONTENT", buttonText) // "BUTTON_CONTENT" is the key
-            startActivity(intent)
-        }
-
-        button3.setOnClickListener {
-            val buttonText = button3.text.toString()
-
-            val intent = Intent(this, SecondActivity::class.java)
-            intent.putExtra("BUTTON_CONTENT", buttonText) // "BUTTON_CONTENT" is the key
-            startActivity(intent)
-        }
-
-        button4.setOnClickListener {
-            val buttonText = button4.text.toString()
-
-            val intent = Intent(this, SecondActivity::class.java)
-            intent.putExtra("BUTTON_CONTENT", buttonText) // "BUTTON_CONTENT" is the key
-            startActivity(intent)
-        }
-
-        button5.setOnClickListener {
-            val buttonText = button5.text.toString()
-
-            val intent = Intent(this, SecondActivity::class.java)
-            intent.putExtra("BUTTON_CONTENT", buttonText) // "BUTTON_CONTENT" is the key
-            startActivity(intent)
-        }
+        listOf(R.id.button, R.id.button2, R.id.button3, R.id.button4, R.id.button5)
+            .forEach { id -> findViewById<Button>(id).setOnClickListener(navigateClickListener) }
     }
 }

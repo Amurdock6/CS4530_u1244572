@@ -19,20 +19,14 @@ class SecondActivity : AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
-        // Text From MainActivity
-        val buttonContent = intent.getStringExtra("BUTTON_CONTENT")
 
-        // Sets text in Secondary activity.
-        val text: TextView = findViewById(R.id.textView)
-        text.text = buttonContent
+        // Text from MainActivity
+        val textFromButton = intent.getStringExtra(MainActivity.EXTRA_BUTTON_CONTENT).orEmpty()
+        findViewById<TextView>(R.id.textView).text = textFromButton
 
-        // Back button logic
-        val backButton: ImageButton = findViewById(R.id.imageButton)
-        backButton.setOnClickListener {
-            val intent = Intent(this, MainActivity::class.java)
-            startActivity(intent)
+        findViewById<ImageButton>(R.id.imageButton).setOnClickListener {
+            // Prefer finishing instead of starting MainActivity again
+            finish()
         }
-
-
     }
 }
