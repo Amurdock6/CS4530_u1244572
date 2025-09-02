@@ -19,7 +19,7 @@ class SecondActivity : AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
-        // From MainActivity
+        // Text From MainActivity
         val buttonContent = intent.getStringExtra("BUTTON_CONTENT")
 
         // Sets text in Secondary activity.
