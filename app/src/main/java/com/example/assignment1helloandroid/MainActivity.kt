@@ -14,6 +14,7 @@ class MainActivity : AppCompatActivity() {
         const val EXTRA_BUTTON_CONTENT = "EXTRA_BUTTON_CONTENT"
     }
 
+    // Handle logic sending data to second activity.
     private val navigateClickListener = View.OnClickListener { view ->
         val text = (view as Button).text.toString()
         startActivity(
@@ -32,6 +33,7 @@ class MainActivity : AppCompatActivity() {
             insets
         }
 
+        // Handle onClick logic for all UI buttons
         listOf(R.id.button, R.id.button2, R.id.button3, R.id.button4, R.id.button5)
             .forEach { id -> findViewById<Button>(id).setOnClickListener(navigateClickListener) }
     }

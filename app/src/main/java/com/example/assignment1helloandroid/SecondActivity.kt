@@ -1,6 +1,5 @@
 package com.example.assignment1helloandroid
 
-import android.content.Intent
 import android.os.Bundle
 import android.widget.ImageButton
 import android.widget.TextView
@@ -24,8 +23,9 @@ class SecondActivity : AppCompatActivity() {
         val textFromButton = intent.getStringExtra(MainActivity.EXTRA_BUTTON_CONTENT).orEmpty()
         findViewById<TextView>(R.id.textView).text = textFromButton
 
+        // Back Button Logic
         findViewById<ImageButton>(R.id.imageButton).setOnClickListener {
-            // Prefer finishing instead of starting MainActivity again
+            // Finishing instead of starting MainActivity again
             finish()
         }
     }
