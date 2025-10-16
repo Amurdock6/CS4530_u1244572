@@ -19,6 +19,7 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
+import com.example.assignment2courseviewereditorapp.viewmodel.CourseViewModelFactory
 
 /**
  * The single Activity hosting our Compose UI.
@@ -27,14 +28,14 @@ import androidx.compose.runtime.setValue
  * Content is set via [setContent], rendering the [CourseApp] composable tree.
  */
 class MainActivity : ComponentActivity() {
-    private val vm: CourseViewModel by viewModels()
-
+    private val vm: CourseViewModel by viewModels {
+        val app = application as CourseApplication
+        CourseViewModelFactory(app.repository)
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContent {
-            CourseApp(vm)
-        }
+        setContent { CourseApp(vm) }
     }
 }
 
